@@ -106,6 +106,9 @@ struct ContentView: View {
 					.cancel()
 				])
 			}
+			.alert(isPresented: $showingErrorAlert) {
+				Alert(title: Text("No image available"), message: Text("Choose an image to save."), dismissButton: .default(Text("OK")))
+			}
 
 		}
 	}
