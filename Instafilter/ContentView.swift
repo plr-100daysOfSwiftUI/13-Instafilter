@@ -197,6 +197,7 @@ struct ContentView: View {
 	
 	func applyProcessing() {
 		let inputKeys = currentFilter.inputKeys
+		// TODO: Can we apply the factors to radius and scale by adjusting the slider parameter?
 		if inputKeys.contains(kCIInputIntensityKey) { currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey) }
 		if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(filterRadius * 200, forKey: kCIInputRadiusKey) }
 		if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(filterScale * 100, forKey: kCIInputScaleKey) }
