@@ -10,6 +10,30 @@ import SwiftUI
 import CoreImage
 import CoreImage.CIFilterBuiltins
 
+enum Filter: String {
+	case CICrystallize = "Crystallize"
+	case CIEdges = "Edges"
+	case CIGaussianBlur = "Gaussian Blur"
+	case CIPixellate = "Pixellate"
+	case CISepiaTone = "Sepia Tone"
+	case CIUnsharpMask = "Unsharp Mask"
+	case CIVignette = "Vignette"
+	
+	init?(name: String) {
+		switch name {
+		case "CICrystallize": self = .CICrystallize
+		case "CIEdges": self = .CIEdges
+		case "CIGaussianBlur": self = .CIGaussianBlur
+		case "CIPixellate": self = .CIPixellate
+		case "CISepiaTone": self = .CISepiaTone
+		case "CIUnsharpMask": self = .CIUnsharpMask
+		case "CIVignette": self = .CIVignette
+		default: return nil
+		}
+	}
+	
+}
+
 struct ContentView: View {
 	
 	@State private var image: Image?
