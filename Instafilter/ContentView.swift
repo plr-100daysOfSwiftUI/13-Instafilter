@@ -37,6 +37,8 @@ struct ContentView: View {
 	
 	@State private var image: Image?
 	@State private var filterIntensity = 0.5
+	@State private var filterRadius = 0.5
+	@State private var filterScale = 0.5
 	
 	@State private var showingImagePicker = false
 	@State private var inputImage: UIImage?
