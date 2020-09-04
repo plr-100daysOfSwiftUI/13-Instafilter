@@ -71,6 +71,26 @@ struct ContentView: View {
 		}
 		)
 		
+		let radius = Binding<Double>(
+			get: {
+				self.filterRadius
+		},
+			set: {
+				self.filterRadius = $0
+				self.applyProcessing()
+		}
+		)
+
+		let scale = Binding<Double>(
+			get: {
+				self.filterScale
+		},
+			set: {
+				self.filterScale = $0
+				self.applyProcessing()
+		}
+		)
+
 		return NavigationView {
 			VStack {
 				ZStack {
