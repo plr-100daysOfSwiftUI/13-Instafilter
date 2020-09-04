@@ -113,11 +113,28 @@ struct ContentView: View {
 					self.showingImagePicker = true
 				}
 				
-				HStack {
-					Text("Intensity")
-					Slider(value: intensity)
-				}.padding(.vertical)
 				
+				if currentFilter.inputKeys.contains(kCIInputIntensityKey){
+					HStack {
+						Text("Intensity")
+						Slider(value: intensity)
+					}.padding(.vertical)
+				}
+
+				if currentFilter.inputKeys.contains(kCIInputRadiusKey) {
+					HStack {
+						Text("Radius")
+						Slider(value: radius)
+					}.padding(.vertical)
+				}
+
+				if currentFilter.inputKeys.contains(kCIInputScaleKey) {
+					HStack {
+						Text("Scale")
+						Slider(value: scale)
+					}.padding(.vertical)
+				}
+
 				HStack {
 					Button(filterDisplayName) {
 						self.showingFilterSheet = true
