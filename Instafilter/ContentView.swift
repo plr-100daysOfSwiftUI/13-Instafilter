@@ -31,14 +31,13 @@ enum Filter: String {
 		default: return nil
 		}
 	}
-	
 }
 
 struct ContentView: View {
 	
 	@State private var image: Image?
 	@State private var filterIntensity = 0.5
-
+	
 	@State private var showingImagePicker = false
 	@State private var inputImage: UIImage?
 	@State private var processedImage: UIImage?
@@ -63,11 +62,11 @@ struct ContentView: View {
 		let intensity = Binding<Double>(
 			get: {
 				self.filterIntensity
-	  	},
+		},
 			set: {
 				self.filterIntensity = $0
 				self.applyProcessing()
-			}
+		}
 		)
 		
 		return NavigationView {
@@ -76,11 +75,11 @@ struct ContentView: View {
 					Rectangle()
 						.fill(Color.secondary)
 					
-						// display the image
+					// display the image
 					if image != nil {
 						image?
-						.resizable()
-						.scaledToFit()
+							.resizable()
+							.scaledToFit()
 					} else {
 						Text("Tap to select a picture")
 							.foregroundColor(.white)
@@ -146,7 +145,7 @@ struct ContentView: View {
 							message: Text("Please choose an image."),
 							dismissButton: .default(Text("OK")))
 			}
-
+			
 		}
 	}
 	
