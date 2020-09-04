@@ -44,6 +44,14 @@ struct ContentView: View {
 	@State private var processedImage: UIImage?
 	
 	@State private var currentFilter: CIFilter = CIFilter.sepiaTone()
+	var filterDisplayName: String {
+		let name = currentFilter.name
+		if let filter: Filter = Filter(name: name) {
+			return filter.rawValue
+		}
+		return "Unknown Filter"
+	}
+	
 	let context = CIContext()
 	
 	@State private var showingFilterSheet = false
