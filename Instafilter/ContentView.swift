@@ -23,6 +23,7 @@ struct ContentView: View {
 	let context = CIContext()
 	
 	@State private var showingFilterSheet = false
+	@State private var showingErrorAlert = false
 	
 	
 	var body: some View {
