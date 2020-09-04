@@ -73,7 +73,10 @@ struct ContentView: View {
 					Spacer()
 					
 					Button("Save") {
-						guard let processedImage = self.processedImage else { return }
+						guard let processedImage = self.processedImage else {
+							self.showingErrorAlert = true
+							return
+						}
 						
 						let imageSaver = ImageSaver()
 						
