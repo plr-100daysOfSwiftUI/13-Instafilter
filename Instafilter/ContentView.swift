@@ -14,8 +14,8 @@ struct ContentView: View {
 	
 	@State private var image: Image?
 	@State private var filterIntensity = 0.5
-	@State private var filterRadius = 0.5
-	@State private var filterScale = 0.5
+	@State private var filterRadius = 100.0
+	@State private var filterScale = 50.0
 	
 	@State private var showingImagePicker = false
 	@State private var inputImage: UIImage?
@@ -100,14 +100,14 @@ struct ContentView: View {
 				if currentFilter.inputKeys.contains(kCIInputRadiusKey) {
 					HStack {
 						Text("Radius")
-						Slider(value: radius)
+						Slider(value: radius, in: 0...200)
 					}.padding(.vertical)
 				}
 
 				if currentFilter.inputKeys.contains(kCIInputScaleKey) {
 					HStack {
 						Text("Scale")
-						Slider(value: scale)
+						Slider(value: scale, in: 0...100)
 					}.padding(.vertical)
 				}
 
@@ -173,10 +173,9 @@ struct ContentView: View {
 	
 	func applyProcessing() {
 		let inputKeys = currentFilter.inputKeys
-		// TODO: Can we apply the factors to radius and scale by adjusting the slider parameter?
 		if inputKeys.contains(kCIInputIntensityKey) { currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey) }
-		if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(filterRadius * 200, forKey: kCIInputRadiusKey) }
-		if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(filterScale * 100, forKey: kCIInputScaleKey) }
+		if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(filterRadius, forKey: kCIInputRadiusKey) }
+		if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(filterScale, forKey: kCIInputScaleKey) }
 		
 		guard let outputImage = currentFilter.outputImage else { return }
 		
